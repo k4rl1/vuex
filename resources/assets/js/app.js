@@ -22,6 +22,7 @@ import store from './store';
  */
 
 Vue.component('counter', require('./components/Counter.vue'));
+Vue.component('other', require('./components/Other.vue'));
 
 const app = new Vue({
     el: '#app',

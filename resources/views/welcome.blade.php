@@ -14,6 +14,7 @@
 <body>
 <div id="app">
     <counter></counter>
+    <other></other>
 </div>
 <script src="{{mix('js/app.js')}}"></script>
 </body>
