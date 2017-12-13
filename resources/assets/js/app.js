@@ -7,11 +7,12 @@
 
 require('./bootstrap');
 
+window._ = require('underscore/underscore.js');
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-Vue.use(Vuex);
 
+Vue.use(Vuex);
 import store from './store';
 
 /**
