@@ -2,7 +2,7 @@
     <div class="container">
         {{count}} the square root of this number is {{sqrt}}
         <p>
-            <input type="text" :value="msg" @input="updateMsg">{{msg}}
+            <input type="text" v-model="msg">{{msg}}
         </p>
         <p>
             <button @click="increment">+1</button>
@@ -21,8 +21,13 @@
             sqrt() {
                 return this.$store.getters.sqrt;
             },
-            msg() {
-                return this.$store.state.msg;
+            msg: {
+                get() {
+                    return this.$store.state.msg;
+                },
+                set(value) {
+                    this.$store.commit('msg', value);
+                }
             }
         },
         methods: {

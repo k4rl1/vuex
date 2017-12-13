@@ -45409,8 +45409,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sqrt: function sqrt() {
             return this.$store.getters.sqrt;
         },
-        msg: function msg() {
-            return this.$store.state.msg;
+
+        msg: {
+            get: function get() {
+                return this.$store.state.msg;
+            },
+            set: function set(value) {
+                this.$store.commit('msg', value);
+            }
         }
     },
     methods: {
@@ -45444,9 +45450,24 @@ var render = function() {
     ),
     _c("p", [
       _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.msg,
+            expression: "msg"
+          }
+        ],
         attrs: { type: "text" },
         domProps: { value: _vm.msg },
-        on: { input: _vm.updateMsg }
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.msg = $event.target.value
+          }
+        }
       }),
       _vm._v(_vm._s(_vm.msg) + "\n    ")
     ]),
