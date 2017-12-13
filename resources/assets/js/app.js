@@ -7,7 +7,12 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+Vue.use(Vuex);
+
+import store from './store';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -18,5 +23,6 @@ window.Vue = require('vue');
 Vue.component('counter', require('./components/Counter.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    store: new Vuex.Store(store)
 });

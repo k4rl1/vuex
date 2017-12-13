@@ -9,14 +9,14 @@
 
 <script>
     export default {
-        data() {
-            return {
-                count: 0
+        computed: {
+            count() {
+                return this.$store.state.count;
             }
         },
         methods: {
             increment() {
-                this.count++;
+                this.$store.commit('increment');
             }
         }
     }
