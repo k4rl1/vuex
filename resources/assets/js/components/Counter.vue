@@ -19,6 +19,5 @@
                 this.count++;
             }
         }
-
     }
 </script>
