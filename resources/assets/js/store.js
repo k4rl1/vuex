@@ -10,13 +10,23 @@ export default {
     },
     actions: {
         increment({commit, state}, text) {
-            commit('increment');
-            commit('msg', text);
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    commit('increment');
+                    resolve("incremnted");
+                }, 1000);
+            });
         },
-        decrement(context) {
-            setTimeout(() => {
-                context.commit('decrement');
-            }, 2000);
+        decrement({commit}) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    commit('decrement');
+                    resolve("count was decremented");
+                }, 1000);
+            });
+        },
+        async msgIncrement({commit, dispatch}) {
+            commit('msg', await dispatch('increment'));
         }
     },
     mutations: {

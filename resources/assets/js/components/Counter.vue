@@ -5,7 +5,7 @@
             <input type="text" v-model="msg">{{msg}}
         </p>
         <p>
-            <button @click="increment">+1</button>
+            <button @click="msgIncrement">+1</button>
             <button @click="decrement">-1</button>
         </p>
     </div>
@@ -35,10 +35,13 @@
                 this.$store.dispatch('increment');
             },
             decrement() {
-                this.$store.dispatch('decrement');
+                var vue = this;
+                vue.$store.dispatch('decrement').then(function(response) {
+                    vue.$store.commit('msg', response);
+                });
             },
-            updateMsg(e) {
-                this.$store.dispatch('increment', e.target.value);
+            msgIncrement() {
+                this.$store.dispatch('msgIncrement');
             }
         }
     }
