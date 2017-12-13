@@ -16,14 +16,14 @@
     export default {
         computed: {
             count() {
-                return this.$store.state.count;
+                return this.$store.state.counter.count;
             },
             sqrt() {
                 return this.$store.getters.sqrt;
             },
             msg: {
                 get() {
-                    return this.$store.state.msg;
+                    return this.$store.state.counter.msg;
                 },
                 set(value) {
                     this.$store.commit('msg', value);
@@ -32,6 +32,7 @@
         },
         methods: {
             increment() {
+                console.log(this.$store);
                 this.$store.dispatch('increment');
             },
             decrement() {

@@ -45294,85 +45294,14 @@ exports.clearImmediate = clearImmediate;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__moduleCounter__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__moduleTaskList__ = __webpack_require__(62);
 
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-    state: {
-        count: 0,
-        msg: "hello you"
-    },
-    getters: {
-        sqrt: function sqrt(state) {
-            return Math.sqrt(state.count);
-        }
-    },
-    actions: {
-        increment: function increment(_ref, text) {
-            var commit = _ref.commit,
-                state = _ref.state;
-
-            return new Promise(function (resolve, reject) {
-                setTimeout(function () {
-                    commit('increment');
-                    resolve("incremnted");
-                }, 1000);
-            });
-        },
-        decrement: function decrement(_ref2) {
-            var commit = _ref2.commit;
-
-            return new Promise(function (resolve, reject) {
-                setTimeout(function () {
-                    commit('decrement');
-                    resolve("count was decremented");
-                }, 1000);
-            });
-        },
-        msgIncrement: function () {
-            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref3) {
-                var commit = _ref3.commit,
-                    dispatch = _ref3.dispatch;
-                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
-                    while (1) {
-                        switch (_context.prev = _context.next) {
-                            case 0:
-                                _context.t0 = commit;
-                                _context.next = 3;
-                                return dispatch('increment');
-
-                            case 3:
-                                _context.t1 = _context.sent;
-                                (0, _context.t0)('msg', _context.t1);
-
-                            case 5:
-                            case "end":
-                                return _context.stop();
-                        }
-                    }
-                }, _callee, this);
-            }));
-
-            function msgIncrement(_x) {
-                return _ref4.apply(this, arguments);
-            }
-
-            return msgIncrement;
-        }()
-    },
-    mutations: {
-        increment: function increment(state) {
-            state.count++;
-        },
-        decrement: function decrement(state) {
-            state.count--;
-        },
-        msg: function msg(state, _msg) {
-            state.msg = _msg;
-        }
+    modules: {
+        counter: __WEBPACK_IMPORTED_MODULE_0__moduleCounter__["a" /* default */],
+        task: __WEBPACK_IMPORTED_MODULE_1__moduleTaskList__["a" /* default */]
     }
 });
 
@@ -45449,7 +45378,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: {
         count: function count() {
-            return this.$store.state.count;
+            return this.$store.state.counter.count;
         },
         sqrt: function sqrt() {
             return this.$store.getters.sqrt;
@@ -45457,7 +45386,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         msg: {
             get: function get() {
-                return this.$store.state.msg;
+                return this.$store.state.counter.msg;
             },
             set: function set(value) {
                 this.$store.commit('msg', value);
@@ -45466,6 +45395,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {
         increment: function increment() {
+            console.log(this.$store);
             this.$store.dispatch('increment');
         },
         decrement: function decrement() {
@@ -46419,6 +46349,181 @@ if (hadRuntime) {
   (function() { return this })() || Function("return this")()
 );
 
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    state: {
+        count: 0,
+        msg: "hello you"
+    },
+    getters: {
+        sqrt: function sqrt(state) {
+            return Math.sqrt(state.count);
+        }
+    },
+    actions: {
+        increment: function increment(_ref, text) {
+            var commit = _ref.commit,
+                state = _ref.state;
+
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    commit('increment');
+                    resolve("incremnted");
+                }, 1000);
+            });
+        },
+        decrement: function decrement(_ref2) {
+            var commit = _ref2.commit;
+
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    commit('decrement');
+                    resolve("count was decremented");
+                }, 1000);
+            });
+        },
+        msgIncrement: function () {
+            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref3) {
+                var commit = _ref3.commit,
+                    dispatch = _ref3.dispatch;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.t0 = commit;
+                                _context.next = 3;
+                                return dispatch('increment');
+
+                            case 3:
+                                _context.t1 = _context.sent;
+                                (0, _context.t0)('msg', _context.t1);
+
+                            case 5:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function msgIncrement(_x) {
+                return _ref4.apply(this, arguments);
+            }
+
+            return msgIncrement;
+        }()
+    },
+    mutations: {
+        increment: function increment(state) {
+            state.count++;
+        },
+        decrement: function decrement(state) {
+            state.count--;
+        },
+        msg: function msg(state, _msg) {
+            state.msg = _msg;
+        }
+    }
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    namespaced: true,
+    state: {
+        count: 0,
+        msg: "hello you"
+    },
+    getters: {
+        sqrt: function sqrt(state) {
+            return Math.sqrt(state.count);
+        }
+    },
+    actions: {
+        increment: function increment(_ref, text) {
+            var commit = _ref.commit,
+                state = _ref.state;
+
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    commit('increment');
+                    resolve("incremnted");
+                }, 1000);
+            });
+        },
+        decrement: function decrement(_ref2) {
+            var commit = _ref2.commit;
+
+            return new Promise(function (resolve, reject) {
+                setTimeout(function () {
+                    commit('decrement');
+                    resolve("count was decremented");
+                }, 1000);
+            });
+        },
+        msgIncrement: function () {
+            var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee(_ref3) {
+                var commit = _ref3.commit,
+                    dispatch = _ref3.dispatch;
+                return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+                    while (1) {
+                        switch (_context.prev = _context.next) {
+                            case 0:
+                                _context.t0 = commit;
+                                _context.next = 3;
+                                return dispatch('increment');
+
+                            case 3:
+                                _context.t1 = _context.sent;
+                                (0, _context.t0)('msg', _context.t1);
+
+                            case 5:
+                            case "end":
+                                return _context.stop();
+                        }
+                    }
+                }, _callee, this);
+            }));
+
+            function msgIncrement(_x) {
+                return _ref4.apply(this, arguments);
+            }
+
+            return msgIncrement;
+        }()
+    },
+    mutations: {
+        increment: function increment(state) {
+            state.count++;
+        },
+        decrement: function decrement(state) {
+            state.count--;
+        },
+        msg: function msg(state, _msg) {
+            state.msg = _msg;
+        }
+    }
+});
 
 /***/ })
 /******/ ]);
